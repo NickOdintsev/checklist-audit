@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Чек-лист «Аудит шляху клієнта»</title>
+    <title>Чек-лист «Аудит вашого шляху клієнта»</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
@@ -44,6 +44,22 @@
             background-color: #2563eb;
             transform: translateY(-1px);
         }
+        .offer-card {
+            background-color: #ffffff;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .offer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        .offer-image {
+            display: block;
+            margin: 0 auto;
+        }
     </style>
 </head>
 <body class="bg-gray-100 p-6 min-h-screen flex items-center justify-center">
@@ -68,7 +84,7 @@
                 <input type="checkbox" class="form-checkbox text-blue-500 w-5 h-5 ml-4 rounded" data-points="1">
             </div>
             <div class="question flex items-center justify-between">
-                <label class="text-gray-700">Чи отримують люди автоматичне підтвердження після того, як залишили свої дані?</label>
+                <label class="text-gray-700">Чи отримують одразу люди автоматичне підтвердження чи обіцяний файл після того, як залишили свої дані?</label>
                 <input type="checkbox" class="form-checkbox text-blue-500 w-5 h-5 ml-4 rounded" data-points="1">
             </div>
         </div>
@@ -89,11 +105,11 @@
                 <input type="checkbox" class="form-checkbox text-blue-500 w-5 h-5 ml-4 rounded" data-points="1">
             </div>
             <div class="question flex items-center justify-between">
-                <label class="text-gray-700">Чи змінюється статус клієнта автоматично після його дій (наприклад, перейшов за посиланням)?</label>
+                <label class="text-gray-700">Чи змінюється статус клієнта автоматично після його дій (наприклад, коли він відкрив лист чи клацнув на посилання)?</label>
                 <input type="checkbox" class="form-checkbox text-blue-500 w-5 h-5 ml-4 rounded" data-points="1">
             </div>
-             <div class="question flex items-center justify-between">
-                <label class="text-gray-700">Чи використовуєте сегментацію бази клієнтів?</label>
+            <div class="question flex items-center justify-between">
+                <label class="text-gray-700">Чи є у вас план дій після того, як клієнт вже щось купив?</label>
                 <input type="checkbox" class="form-checkbox text-blue-500 w-5 h-5 ml-4 rounded" data-points="1">
             </div>
         </div>
@@ -110,7 +126,7 @@
                 <input type="checkbox" class="form-checkbox text-blue-500 w-5 h-5 ml-4 rounded" data-points="1">
             </div>
             <div class="question flex items-center justify-between">
-                <label class="text-gray-700">Чи є у вас автоматичний процес для відправки їм повідомлень?</label>
+                <label class="text-gray-700">Чи є у вас автоматичний процес для відправки комерційних пропозицій або важливих документів?</label>
                 <input type="checkbox" class="form-checkbox text-blue-500 w-5 h-5 ml-4 rounded" data-points="1">
             </div>
         </div>
@@ -142,15 +158,58 @@
         </div>
     </div>
 
+    <!-- Tripwire Offers Section -->
+    <div id="offers-section" class="hidden mt-12 text-center">
+        <!-- Повідомлення оновлено для одного універсального трипваєра -->
+        <h2 class="text-2xl font-bold mb-6 text-gray-800">Отримайте персоналізований план!</h2>
+        <p class="text-gray-600 mb-8">
+            За вашим результатом, є можливості для значного росту. Не витрачайте місяці на пошук "ідеального" рішення. На цій консультації ви знайдете свої "вузькі місця" і отримаєте чіткий план, як почати заробляти більше.
+        </p>
+
+        <!-- Цей блок замінює три попередні пропозиції -->
+        <div class="flex justify-center">
+            <div class="offer-card w-full md:w-1/2" data-offer-id="1">
+                <!-- Зображення-заглушка оновлено для універсальної пропозиції -->
+                <img src="https://drive.google.com/uc?id=1Z6zZm4nu6HJasf_9lQT3xU0LtCK-9LEU" alt="Іконка стратегії" class="offer-image w-24 h-24 mb-4">
+                <h4 class="text-lg font-bold mb-2 text-gray-800">Особиста консультація</h4>
+                <p class="text-gray-500 text-sm mb-4">
+                    30 хвилин
+                </p>
+                <!-- Ціна тепер виглядає як кнопка -->
+                <button class="btn btn-primary text-2xl px-8 py-3">
+                    <span class="text-lg font-normal text-gray-400 line-through mr-2">$30</span>
+                    $10
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Info Section -->
+    <div id="contact-info-section" class="hidden mt-12 text-center p-6 bg-blue-50 rounded-lg border-2 border-blue-200">
+        <h3 class="text-xl font-bold mb-2 text-blue-700">Єдиноразова пропозиція</h3>
+        <p class="text-blue-600 font-semibold mb-4">
+            Зверніться до мене протягом <span id="countdown" class="text-2xl font-bold">12:00:00</span>, щоб отримати послугу за спеціальною ціною.
+        </p>
+        <p class="text-blue-600 mb-2">Надішліть мені повідомлення в один з цих каналів:</p>
+        <div class="flex flex-col items-center gap-2 text-blue-800">
+            <span class="font-bold">Мій E-mail: <a href="mailto:odin.nickolay@gmail.com" class="text-blue-500 underline">odin.nickolay@gmail.com</a></span>
+            <span class="font-bold">Телефон: <a href="tel:+380971234567" class="text-blue-500 underline">+380 97 123 45 67</a></span>
+            <span class="font-bold">Instagram: <a href="https://instagram.com/nick.inflow" target="_blank" class="text-blue-500 underline">@nick.inflow</a></span>
+        </div>
+    </div>
 </div>
 
 <script>
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
     const calculateBtn = document.getElementById('calculate-btn');
     const resultsSection = document.getElementById('results-section');
+    const offersSection = document.getElementById('offers-section');
     const totalScoreSpan = document.getElementById('total-score');
     const verdictEl = document.getElementById('verdict');
     const nextStepEl = document.getElementById('next-step');
+    const offerCards = document.querySelectorAll('.offer-card');
+    const contactInfoSection = document.getElementById('contact-info-section');
+    const countdownEl = document.getElementById('countdown');
 
     // Function to calculate score and display verdict
     function calculateScore() {
@@ -184,7 +243,41 @@
         nextStepEl.textContent = nextStepText;
 
         resultsSection.classList.remove('hidden');
+        offersSection.classList.remove('hidden');
     }
+
+    // Function to start the 12-hour countdown
+    function startCountdown() {
+        const endTime = Date.now() + 12 * 60 * 60 * 1000;
+
+        const timerInterval = setInterval(() => {
+            const now = Date.now();
+            const distance = endTime - now;
+
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            countdownEl.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+            if (distance < 0) {
+                clearInterval(timerInterval);
+                countdownEl.textContent = "Час вийшов!";
+            }
+        }, 1000);
+    }
+
+    // Event listener for tripwire offers
+    offerCards.forEach(card => {
+        card.addEventListener('click', () => {
+            contactInfoSection.classList.remove('hidden');
+            startCountdown();
+            
+            // You can add logic here to send data to your backend
+            // const offerId = card.dataset.offerId;
+            // console.log(`User clicked on offer ${offerId}.`);
+        });
+    });
 
     calculateBtn.addEventListener('click', calculateScore);
 </script>
