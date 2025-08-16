@@ -108,10 +108,6 @@
                 <label class="text-gray-700">Чи змінюється статус клієнта автоматично після його дій (наприклад, коли він відкрив лист чи клацнув на посилання)?</label>
                 <input type="checkbox" class="form-checkbox text-blue-500 w-5 h-5 ml-4 rounded" data-points="1">
             </div>
-            <div class="question flex items-center justify-between">
-                <label class="text-gray-700">Чи є у вас план дій після того, як клієнт вже щось купив?</label>
-                <input type="checkbox" class="form-checkbox text-blue-500 w-5 h-5 ml-4 rounded" data-points="1">
-            </div>
         </div>
 
         <!-- Етап 3 -->
@@ -131,8 +127,25 @@
             </div>
         </div>
 
-        <!-- Етап 4 -->
-        <h2 class="text-2xl font-bold section-title text-gray-700 mb-4">Етап 4: Аналітика</h2>
+        <!-- Етап 4 - Додано новий розділ -->
+        <h2 class="text-2xl font-bold section-title text-gray-700 mb-4">Етап 4: Післяпродажне обслуговування та утримання</h2>
+        <div class="space-y-4 mb-8">
+            <div class="question flex items-center justify-between">
+                <label class="text-gray-700">Чи є у вас чіткий план дій після того, як клієнт вже щось купив?</label>
+                <input type="checkbox" class="form-checkbox text-blue-500 w-5 h-5 ml-4 rounded" data-points="1">
+            </div>
+            <div class="question flex items-center justify-between">
+                <label class="text-gray-700">Чи збираєте ви зворотній зв'язок?</label>
+                <input type="checkbox" class="form-checkbox text-blue-500 w-5 h-5 ml-4 rounded" data-points="1">
+            </div>
+            <div class="question flex items-center justify-between">
+                <label class="text-gray-700">Чи існують у вас програми лояльності або персоналізовані пропозиції для повторних покупок?</label>
+                <input type="checkbox" class="form-checkbox text-blue-500 w-5 h-5 ml-4 rounded" data-points="1">
+            </div>
+        </div>
+
+        <!-- Етап 5 - Змінено нумерацію -->
+        <h2 class="text-2xl font-bold section-title text-gray-700 mb-4">Етап 5: Аналітика</h2>
         <div class="space-y-4 mb-8">
             <div class="question flex items-center justify-between">
                 <label class="text-gray-700">Чи можете ви легко порахувати, скільки людей з відвідувачів стають зацікавленими клієнтами?</label>
@@ -225,11 +238,11 @@
         let verdictText = "";
         let nextStepText = "";
 
-        if (score >= 8) {
+        if (score >= 12) {
             verdictText = "Висока ефективність.";
             nextStepText = "Ваша система працює добре. Давайте обговоримо, як зробити її ще потужнішою за допомогою складніших автоматизацій.";
             verdictEl.style.color = '#10b981'; // green
-        } else if (score >= 4) {
+        } else if (score >= 7) {
             verdictText = "Середня ефективність.";
             nextStepText = "У вас є гарна основа, але більшість процесів виконуються вручну. Ми можемо налаштувати ключові автоматизації, щоб ваша система працювала значно швидше та ефективніше.";
             verdictEl.style.color = '#f59e0b'; // amber
