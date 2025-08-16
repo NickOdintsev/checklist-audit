@@ -180,8 +180,12 @@
 
         <div class="flex justify-center">
             <div class="offer-card w-full md:w-1/2" data-offer-id="1">
-                <!-- Виправлене посилання на зображення -->
-                <img src="https://placehold.co/96x96/6366f1/ffffff?text=Strategy" alt="Іконка стратегії" class="offer-image w-24 h-24 mb-4">
+                <!-- Вбудована SVG іконка замість зображення -->
+                <div class="flex justify-center mb-4">
+                    <svg class="w-24 h-24 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                    </svg>
+                </div>
                 <h4 class="text-lg font-bold mb-2 text-gray-800">Особиста консультація</h4>
                 <p class="text-gray-500 text-sm mb-4">
                     30 хвилин
