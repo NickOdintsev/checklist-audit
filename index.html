@@ -180,12 +180,7 @@
 
         <div class="flex justify-center">
             <div class="offer-card w-full md:w-1/2" data-offer-id="1">
-                <!-- Вбудована SVG іконка замість зображення -->
-                <div class="flex justify-center mb-4">
-                    <svg class="w-24 h-24 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
-                    </svg>
-                </div>
+                <img src="https://i.ibb.co/L5hY5m8/image.png" alt="Іконка стратегії" class="offer-image w-24 h-24 mb-4 rounded-full">
                 <h4 class="text-lg font-bold mb-2 text-gray-800">Особиста консультація</h4>
                 <p class="text-gray-500 text-sm mb-4">
                     30 хвилин
@@ -198,103 +193,49 @@
         </div>
     </div>
 
-    <!-- Contact Info Section -->
-    <div id="contact-info-section" class="hidden mt-12 text-center p-6 bg-blue-50 rounded-lg border-2 border-blue-200">
-        <h3 class="text-xl font-bold mb-2 text-blue-700">Єдиноразова пропозиція</h3>
-        <p class="text-blue-600 font-semibold mb-4">
-            Зверніться до мене протягом <span id="countdown" class="text-2xl font-bold">12:00:00</span>, щоб отримати послугу за спеціальною ціною.
-        </p>
-        <p class="text-blue-600 mb-2">Надішліть мені повідомлення в один з цих каналів:</p>
-        <div class="flex flex-col items-center gap-2 text-blue-800">
-            <span class="font-bold">Мій E-mail: <a href="mailto:odin.nickolay@gmail.com" class="text-blue-500 underline">odin.nickolay@gmail.com</a></span>
-            <span class="font-bold">Телефон: <a href="tel:+380971234567" class="text-blue-500 underline">+380 97 123 45 67</a></span>
-            <span class="font-bold">Instagram: <a href="https://instagram.com/nick.inflow" target="_blank" class="text-blue-500 underline">@nick.inflow</a></span>
-        </div>
-    </div>
-</div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkboxes = document.querySelectorAll('.form-checkbox');
+            const calculateBtn = document.getElementById('calculate-btn');
+            const resultsSection = document.getElementById('results-section');
+            const totalScoreSpan = document.getElementById('total-score');
+            const verdictParagraph = document.getElementById('verdict');
+            const nextStepParagraph = document.getElementById('next-step');
+            const offersSection = document.getElementById('offers-section');
 
-<script>
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    const calculateBtn = document.getElementById('calculate-btn');
-    const resultsSection = document.getElementById('results-section');
-    const offersSection = document.getElementById('offers-section');
-    const totalScoreSpan = document.getElementById('total-score');
-    const verdictEl = document.getElementById('verdict');
-    const nextStepEl = document.getElementById('next-step');
-    const offerCards = document.querySelectorAll('.offer-card');
-    const contactInfoSection = document.getElementById('contact-info-section');
-    const countdownEl = document.getElementById('countdown');
+            calculateBtn.addEventListener('click', () => {
+                let score = 0;
+                checkboxes.forEach(checkbox => {
+                    if (checkbox.checked) {
+                        score += parseInt(checkbox.getAttribute('data-points'));
+                    }
+                });
 
-    // Function to calculate score and display verdict
-    function calculateScore() {
-        let score = 0;
-        checkboxes.forEach(checkbox => {
-            if (checkbox.checked) {
-                score += parseInt(checkbox.dataset.points);
-            }
+                totalScoreSpan.textContent = score;
+
+                let verdict = '';
+                let nextStep = '';
+                
+                if (score >= 12) {
+                    verdict = 'Ваш шлях клієнта добре оптимізований!';
+                    nextStep = 'Продовжуйте вдосконалюватись та масштабувати успішні стратегії. Можливо, варто розглянути нові ринки або продукти.';
+                    offersSection.classList.add('hidden');
+                } else if (score >= 7) {
+                    verdict = 'Ваш шлях клієнта має міцну основу, але потребує оптимізації.';
+                    nextStep = 'Зосередьтеся на ключових "вузьких місцях" у вашому процесі. Трипваєр-пропозиція може стати чудовим першим кроком.';
+                    offersSection.classList.remove('hidden');
+                } else {
+                    verdict = 'Ваш шлях клієнта вимагає серйозної роботи.';
+                    nextStep = 'Настав час створити чітку і ефективну систему, щоб перестати втрачати потенційних клієнтів. Розгляньте трипваєр-пропозицію, щоб отримати детальний план.';
+                    offersSection.classList.remove('hidden');
+                }
+
+                verdictParagraph.textContent = verdict;
+                nextStepParagraph.textContent = nextStep;
+                resultsSection.classList.remove('hidden');
+            });
         });
-
-        totalScoreSpan.textContent = score;
-
-        let verdictText = "";
-        let nextStepText = "";
-
-        if (score >= 12) {
-            verdictText = "Висока ефективність.";
-            nextStepText = "Ваша система працює добре. Давайте обговоримо, як зробити її ще потужнішою за допомогою складніших автоматизацій.";
-            verdictEl.style.color = '#10b981'; // green
-        } else if (score >= 7) {
-            verdictText = "Середня ефективність.";
-            nextStepText = "У вас є гарна основа, але більшість процесів виконуються вручну. Ми можемо налаштувати ключові автоматизації, щоб ваша система працювала значно швидше та ефективніше.";
-            verdictEl.style.color = '#f59e0b'; // amber
-        } else {
-            verdictText = "Низька ефективність.";
-            nextStepText = "Не хвилюйтесь, це чудова можливість для росту! Навіть невеликі зміни можуть принести значний результат. Ми можемо почати з найважливішої автоматизації, яка одразу дасть вам перші відчутні результати.";
-            verdictEl.style.color = '#ef4444'; // red
-        }
-
-        verdictEl.textContent = verdictText;
-        nextStepEl.textContent = nextStepText;
-
-        resultsSection.classList.remove('hidden');
-        offersSection.classList.remove('hidden');
-    }
-
-    // Function to start the 12-hour countdown
-    function startCountdown() {
-        const endTime = Date.now() + 12 * 60 * 60 * 1000;
-
-        const timerInterval = setInterval(() => {
-            const now = Date.now();
-            const distance = endTime - now;
-
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            countdownEl.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-
-            if (distance < 0) {
-                clearInterval(timerInterval);
-                countdownEl.textContent = "Час вийшов!";
-            }
-        }, 1000);
-    }
-
-    // Event listener for tripwire offers
-    offerCards.forEach(card => {
-        card.addEventListener('click', () => {
-            contactInfoSection.classList.remove('hidden');
-            startCountdown();
-            
-            // You can add logic here to send data to your backend
-            // const offerId = card.dataset.offerId;
-            // console.log(`User clicked on offer ${offerId}.`);
-        });
-    });
-
-    calculateBtn.addEventListener('click', calculateScore);
-</script>
+    </script>
 
 </body>
 </html>
