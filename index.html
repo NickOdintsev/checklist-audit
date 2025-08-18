@@ -173,7 +173,7 @@
 
     <!-- Tripwire Offers Section -->
     <div id="offers-section" class="hidden mt-12 text-center">
-        <h2 class="text-2xl font-bold mb-6 text-gray-800">Отримайте персоналізований план!</h2>
+        <h2 class="text-2xl font-bold mb-6 text-gray-800">Одноразова пропозиція</h2>
         <p class="text-gray-600 mb-8">
             За вашим результатом, є можливості для значного росту. Не витрачайте місяці на пошук "ідеального" рішення.<br>На цій 30-хвилинній консультації ви знайдете свої "вузькі місця" і отримаєте чіткий план, як почати заробляти більше.
         </p>
@@ -191,9 +191,18 @@
 
     <!-- Booking Confirmation Section -->
     <div id="booking-confirmation" class="hidden mt-12 p-6 bg-gray-50 rounded-lg text-center">
+        <!-- Displayed after clicking the $10 button -->
         <h3 class="text-xl font-bold text-gray-800 mb-4">Надсилайте свої контакти, я зв'яжуся з вами протягом 12 годин:</h3>
-        <p class="text-gray-600">
+        <p class="text-gray-600 mb-4">
             Для бронювання консультації, будь ласка, надішліть свої контактні дані (email, Telegram, WhatsApp тощо) у відповідь.
+        </p>
+        <div id="countdown-timer" class="text-2xl font-bold text-red-500 mb-4"></div>
+        <p class="text-gray-600 mb-2">
+            <strong>Мої контакти для зв'язку:</strong>
+        </p>
+        <p class="text-blue-600">
+            <a href="https://t.me/your_telegram" class="hover:underline">Telegram: @your_telegram</a><br>
+            <a href="mailto:your.email@example.com" class="hover:underline">Email: your.email@example.com</a>
         </p>
     </div>
 
@@ -208,6 +217,7 @@
             const offersSection = document.getElementById('offers-section');
             const bookBtn = document.getElementById('book-btn');
             const bookingConfirmation = document.getElementById('booking-confirmation');
+            const countdownTimer = document.getElementById('countdown-timer');
 
             calculateBtn.addEventListener('click', () => {
                 let score = 0;
@@ -245,6 +255,25 @@
             bookBtn.addEventListener('click', () => {
                 offersSection.classList.add('hidden');
                 bookingConfirmation.classList.remove('hidden');
+
+                // Start the 12-hour countdown timer
+                const duration = 12 * 60 * 60 * 1000; // 12 hours in milliseconds
+                const endTime = Date.now() + duration;
+
+                const timerInterval = setInterval(() => {
+                    const timeLeft = endTime - Date.now();
+                    
+                    if (timeLeft <= 0) {
+                        clearInterval(timerInterval);
+                        countdownTimer.textContent = 'Пропозиція закінчилась';
+                    } else {
+                        const hours = Math.floor(timeLeft / (1000 * 60 * 60));
+                        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                        countdownTimer.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                    }
+                }, 1000);
             });
         });
     </script>
